@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-onion-redis-python",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node start.js",
+    "test": "node test.js"
+  },
+  "bin": {
+    "onion-redis-python": "./start.js"
+  },
+  "author": "Vitche Research Team",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "nodejs-onion-redis-call": "git+https://github.com/vitche/nodejs-onion-redis-call.git"
+  }
+}
