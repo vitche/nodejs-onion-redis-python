@@ -56,6 +56,20 @@ const buildEvaluator = (namespace, connectionCallback) => {
     }).Namespace(namespace).Class('PythonEvaluator');
   return evaluator;
 };
+const buildConsumer = (namespace, connectionCallback) => {
+  const consumer = new OnionRedis(
+    process.env.ONION_REDIS_URI,
+    undefined,
+    function (error) {
+      if (undefined !== error) {
+        console.log(error);
+        return;
+      }
+      connectionCallback();
+    }).Namespace(namespace).Class('PythonEvaluator');
+  return consumer;
+};
 module.exports = {
-  buildEvaluator
+  buildEvaluator,
+  buildConsumer
 };
