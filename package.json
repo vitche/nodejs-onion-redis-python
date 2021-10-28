@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "nodejs-resource-limit": "git+https://github.com/vitche/nodejs-resource-limit.git",
     "nodejs-onion-redis-call": "git+https://github.com/vitche/nodejs-onion-redis-call.git"
   }
 }
