@@ -6,11 +6,16 @@ const OnionRedis = require("nodejs-onion-redis-call");
 const execute = (filePath, callback) => {
   const command = `python ${filePath}`;
   exec(command, (error, stdout, stderr) => {
-    if (error) {
-      callback(error);
+    if (error && stderr) {
+      callback({
+        command: error.cmd,
+        stack: error.stack
+      });
+      return;
     }
     if (stdout) {
       callback(stdout);
+      return;
     }
     if (stderr) {
       callback(stderr);
