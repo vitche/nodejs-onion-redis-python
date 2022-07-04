@@ -4,7 +4,7 @@ const {exec} = require("child_process");
 const {tmpdir} = require("os");
 const OnionRedis = require("nodejs-onion-redis-call");
 const execute = (filePath, callback) => {
-  const command = `python ${filePath}`;
+  const command = `python ${filePath} | tee`;
   exec(command, (error, stdout, stderr) => {
     if (error && stderr) {
       callback({
