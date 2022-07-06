@@ -5,7 +5,12 @@ const {tmpdir} = require("os");
 const OnionRedis = require("nodejs-onion-redis-call");
 const execute = (filePath, callback) => {
   const command = `python ${filePath} | tee`;
-  exec(command, (error, stdout, stderr) => {
+  exec(command, {
+    env: {
+      // This assures libraries to be found
+      PATH: "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    }
+  }, (error, stdout, stderr) => {
     if (error && stderr) {
       callback({
         command: error.cmd,
